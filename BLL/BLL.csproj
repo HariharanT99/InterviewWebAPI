@@ -6,7 +6,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IDAL\IDAL.csproj" />
+    <ProjectReference Include="..\DAL\DAL.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="..\IBLL\IBLL.csproj" />
   </ItemGroup>
 
 </Project>

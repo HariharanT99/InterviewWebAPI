@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IBLL\IBLL.csproj" />
+    <ProjectReference Include="..\BLL\BLL.csproj" />
   </ItemGroup>
 
 </Project>
