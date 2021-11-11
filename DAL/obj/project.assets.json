@@ -20,6 +20,29 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
+      "Mapster/7.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Mapster.Core": "1.2.0",
+          "Microsoft.CSharp": "4.3.0",
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Mapster.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Mapster.dll": {}
+        }
+      },
+      "Mapster.Core/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Mapster.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Mapster.Core.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.7.0": {
         "type": "package",
         "compile": {
@@ -991,7 +1014,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/System.Reflection.Emit.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.dll": {}
@@ -1005,7 +1028,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
@@ -1532,6 +1555,9 @@
       "IDAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "ViewModel": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/IDAL.dll": {}
         },
@@ -1547,6 +1573,16 @@
         },
         "runtime": {
           "bin/placeholder/Model.dll": {}
+        }
+      },
+      "ViewModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/ViewModel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ViewModel.dll": {}
         }
       }
     }
@@ -1584,6 +1620,38 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Mapster/7.2.0": {
+      "sha512": "dIXWyCPHrzcQ7Aeblz/bKxsP9ZxGMMbHZTyywZS7/cGa9elPcJiTNeJ4OahzLtATzL13xC4MF8NRNcj49cCIng==",
+      "type": "package",
+      "path": "mapster/7.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net40/Mapster.dll",
+        "lib/net45/Mapster.dll",
+        "lib/netstandard1.3/Mapster.dll",
+        "lib/netstandard2.0/Mapster.dll",
+        "mapster.7.2.0.nupkg.sha512",
+        "mapster.nuspec"
+      ]
+    },
+    "Mapster.Core/1.2.0": {
+      "sha512": "TNdqZk2zAuBYfJF88D/3clQTOyOdqr1crU81yZQtlGa+e7FYWhJdK/buBWT+TpM3qQko9UzmzfOT4iq3JCs/ZA==",
+      "type": "package",
+      "path": "mapster.core/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net40/Mapster.Core.dll",
+        "lib/net45/Mapster.Core.dll",
+        "lib/netstandard1.3/Mapster.Core.dll",
+        "lib/netstandard2.0/Mapster.Core.dll",
+        "mapster.core.1.2.0.nupkg.sha512",
+        "mapster.core.nuspec"
       ]
     },
     "Microsoft.CSharp/4.7.0": {
@@ -5844,17 +5912,24 @@
       "type": "project",
       "path": "../Model/Model.csproj",
       "msbuildProject": "../Model/Model.csproj"
+    },
+    "ViewModel/1.0.0": {
+      "type": "project",
+      "path": "../ViewModel/ViewModel.csproj",
+      "msbuildProject": "../ViewModel/ViewModel.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Dapper >= 2.0.123",
       "IDAL >= 1.0.0",
+      "Mapster >= 7.2.0",
       "Microsoft.EntityFrameworkCore >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.11",
-      "Model >= 1.0.0"
+      "Model >= 1.0.0",
+      "ViewModel >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5894,6 +5969,9 @@
             },
             "C:\\Users\\thahseenn\\Documents\\Projects\\InterviewWebAPI\\Model\\Model.csproj": {
               "projectPath": "C:\\Users\\thahseenn\\Documents\\Projects\\InterviewWebAPI\\Model\\Model.csproj"
+            },
+            "C:\\Users\\thahseenn\\Documents\\Projects\\InterviewWebAPI\\ViewModel\\ViewModel.csproj": {
+              "projectPath": "C:\\Users\\thahseenn\\Documents\\Projects\\InterviewWebAPI\\ViewModel\\ViewModel.csproj"
             }
           }
         }
@@ -5911,6 +5989,10 @@
           "Dapper": {
             "target": "Package",
             "version": "[2.0.123, )"
+          },
+          "Mapster": {
+            "target": "Package",
+            "version": "[7.2.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",

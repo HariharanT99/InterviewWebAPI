@@ -1589,7 +1589,8 @@
           "IDAL": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
-          "Model": "1.0.0"
+          "Model": "1.0.0",
+          "ViewModel": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DAL.dll": {}
@@ -1611,6 +1612,9 @@
       "IDAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "ViewModel": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/IDAL.dll": {}
         },
@@ -1626,6 +1630,16 @@
         },
         "runtime": {
           "bin/placeholder/Model.dll": {}
+        }
+      },
+      "ViewModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/ViewModel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ViewModel.dll": {}
         }
       }
     }
@@ -5989,6 +6003,11 @@
       "type": "project",
       "path": "../Model/Model.csproj",
       "msbuildProject": "../Model/Model.csproj"
+    },
+    "ViewModel/1.0.0": {
+      "type": "project",
+      "path": "../ViewModel/ViewModel.csproj",
+      "msbuildProject": "../ViewModel/ViewModel.csproj"
     }
   },
   "projectFileDependencyGroups": {

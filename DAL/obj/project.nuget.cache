@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "pTsddmb72eY3c8d40gl02ed8R+7iFju+yZR8jD1l5qUnG7UVfEcYq2qxwJ5fxGnewkwJWkdfo+nafqvgpKZvvg==",
+  "dgSpecHash": "TPlTtXE8h7TPLaIUXPgVUnWPFuO7CPFFBbZcFM/MC7Vq5PkiHT7vP6B48bMb49CyeeV9NYi5tF7UaHEujE4Vzg==",
   "success": true,
   "projectFilePath": "C:\\Users\\thahseenn\\Documents\\Projects\\InterviewWebAPI\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thahseenn\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\thahseenn\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\thahseenn\\.nuget\\packages\\mapster\\7.2.0\\mapster.7.2.0.nupkg.sha512",
+    "C:\\Users\\thahseenn\\.nuget\\packages\\mapster.core\\1.2.0\\mapster.core.1.2.0.nupkg.sha512",
     "C:\\Users\\thahseenn\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\thahseenn\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\thahseenn\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
