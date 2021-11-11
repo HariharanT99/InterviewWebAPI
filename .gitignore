@@ -405,3 +405,9 @@ ASALocalRun/
 .localhistory/
 
 .History
+
+*.cache
+
+bin
+
+obj
