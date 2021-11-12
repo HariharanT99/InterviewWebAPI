@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -16,8 +18,9 @@ namespace Model
 
         [Key]
         [Column("RoleID")]
-        public int RoleId { get; set; }
-        [StringLength(150)]
+        public byte RoleId { get; set; }
+        [Required]
+        [StringLength(15)]
         public string Type { get; set; }
 
         [InverseProperty(nameof(UserRole.Role))]

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -16,8 +18,9 @@ namespace Model
 
         [Key]
         [Column("RatingID")]
-        public int RatingId { get; set; }
-        public int? Value { get; set; }
+        public byte RatingId { get; set; }
+        public byte Value { get; set; }
+        [Required]
         [StringLength(20)]
         public string Category { get; set; }
 

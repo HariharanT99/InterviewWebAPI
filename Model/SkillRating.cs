@@ -1,5 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -12,11 +15,11 @@ namespace Model
         [Column("SkillRatingID")]
         public int SkillRatingId { get; set; }
         [Column("ReviewID")]
-        public int? ReviewId { get; set; }
+        public int ReviewId { get; set; }
         [Column("SkillID")]
-        public int? SkillId { get; set; }
+        public int SkillId { get; set; }
         [Column("RatingID")]
-        public int? RatingId { get; set; }
+        public byte RatingId { get; set; }
 
         [ForeignKey(nameof(RatingId))]
         [InverseProperty("SkillRatings")]

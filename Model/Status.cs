@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -18,6 +20,7 @@ namespace Model
         [Key]
         [Column("StatusID")]
         public byte StatusId { get; set; }
+        [Required]
         [StringLength(20)]
         public string StatusType { get; set; }
 
