@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "0ot2ziS1wsn9FKQo14CAVInrCCADbdDhmAnQOgOWRF36O0U+5c8qXlFWmyyaaJwJ20gvZGifANCTr9XOkXudIg==",
+  "dgSpecHash": "y0uFwdLfWBc6Cpq3qoSJe30YpZZoWom2ZmsJfqdVyGxlr2wqEmZ/qYCGY5lowXeYOrGoJFFYMH+KxMG2kBjjew==",
   "success": true,
   "projectFilePath": "C:\\Users\\thahseenn\\Documents\\Projects\\InterviewWebAPI\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thahseenn\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\thahseenn\\.nuget\\packages\\mapster\\7.2.0\\mapster.7.2.0.nupkg.sha512",
+    "C:\\Users\\thahseenn\\.nuget\\packages\\mapster.core\\1.2.0\\mapster.core.1.2.0.nupkg.sha512",
     "C:\\Users\\thahseenn\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\thahseenn\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\thahseenn\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

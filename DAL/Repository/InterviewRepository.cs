@@ -31,6 +31,11 @@ namespace DAL.Repository
                 {
                     result.Data = true;
                 }
+                else
+                {
+                    result.Error.Succeeded = false;
+                    result.Error.ErrorMsg = "Applicant not found";
+                }
             }
             catch (System.Exception)
             {
@@ -39,6 +44,37 @@ namespace DAL.Repository
                 result.Error.ErrorCode = 500;
                 throw;
             }
+            return result;
+        }
+
+        public async Task<ResponseViewModel<bool>> ScheduleInterviewDate(ScheduleInterviewViewModel model)
+        {
+            ResponseViewModel<bool> result = new ResponseViewModel<bool>();
+
+            try
+            {
+                string query = "Exec spUpdateInterviewDate @InterviewId,@InterviewAt";
+
+                var parameters = new DynamicParameters(model);
+
+                var response = await Connection.QueryFirstOrDefaultAsync<string>(query, parameters);
+
+                if (response == "Success")
+                {
+                    result.Data = true;
+                }
+                else
+                {
+                    result.Error.Succeeded = false;
+                    result.Error.ErrorMsg = "something went wrong";
+                }
+            }
+            catch (System.Exception)
+            {
+                result.Error.Succeeded = false;
+                result.Error.ErrorMsg = "something went wrong";
+            }
+
             return result;
         }
     }

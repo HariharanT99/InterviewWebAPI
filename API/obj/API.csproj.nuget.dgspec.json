@@ -203,6 +203,10 @@
               "target": "Package",
               "version": "[2.0.123, )"
             },
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.11, )"
@@ -270,7 +274,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\thahseenn\\Documents\\Projects\\InterviewWebAPI\\ViewModel\\ViewModel.csproj": {
+                "projectPath": "C:\\Users\\thahseenn\\Documents\\Projects\\InterviewWebAPI\\ViewModel\\ViewModel.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
