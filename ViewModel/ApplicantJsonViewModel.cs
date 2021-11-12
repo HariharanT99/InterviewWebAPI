@@ -8,6 +8,7 @@ namespace ViewModel
 {
     public class ApplicantJsonViewModel
     {
+        public int ApplicantId { get; set; }
         public string Name { get; set; }
         public string Designation { get; set; }
         public string LastEmployer { get; set; }

@@ -7,8 +7,8 @@ using ViewModel;
 
 namespace IDAL.IRepository
 {
-    public interface IInterviewRepository
+    public interface IDesignationRepository
     {
-        Task<ResponseViewModel<bool>> PromoteCandidate(int applicantId, int interviewId);
+        Task<ResponseViewModel<List<DesignationViewModel>>> GetAllDesignation();
     }
 }
