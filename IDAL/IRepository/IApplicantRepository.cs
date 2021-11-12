@@ -9,5 +9,6 @@ namespace IDAL.IRepository
 
         Task<ResponseViewModel<List<DashboardApplicantViewModel>>> GetAllCandidateList();
 
+        Task<ResponseViewModel<bool>> EditCandidate(UpdateCandidateViewModel data);
     }
 }

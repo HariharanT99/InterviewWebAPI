@@ -14,6 +14,34 @@ namespace DAL.Repository
 
         public ApplicantRepository(IDbConnection connection) : base(connection) { }
 
+        public async Task<ResponseViewModel<bool>> EditCandidate(UpdateCandidateViewModel data)
+        {
+            ResponseViewModel<bool> result = new ResponseViewModel<bool>();
+
+            try
+            {
+                string query = "Exec uspUpdateApplicant @ApplicantId,@UserId ,@FirstName,@LastName,@LastEmployer,@LastDesignation,@AppliedFor,@ReferredBy,@MedicalStatus,@NoticePeriod ";
+
+                var parameters = new DynamicParameters(data);
+
+                var response = await Connection.QueryAsync<string>(query, parameters);
+
+                if (response.FirstOrDefault() == "Success")
+                {
+                    result.Data = true;
+                }
+
+            }
+            catch (System.Exception)
+            {
+                result.Error.Succeeded = false;
+                result.Error.ErrorMsg = "Something went wrong";
+                result.Error.ErrorCode = 500;
+            }
+
+            return result;
+        }
+
         public async Task<ResponseViewModel<List<DashboardApplicantViewModel>>> GetAllCandidateList()
         {
             ResponseViewModel<List<DashboardApplicantViewModel>> result = new ResponseViewModel<List<DashboardApplicantViewModel>>();
@@ -56,10 +84,11 @@ namespace DAL.Repository
                 result.Error.Succeeded = false;
                 result.Error.ErrorMsg = "Something went wrong";
                 result.Error.ErrorCode = 500;
-                throw;
             }
 
             return result;
         }
+
+
     }
 }
