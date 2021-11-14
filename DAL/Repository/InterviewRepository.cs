@@ -14,7 +14,7 @@ namespace DAL.Repository
     {
         public InterviewRepository(IDbConnection connection): base(connection){ } 
 
-        public async Task<ResponseViewModel<bool>> PromoteCandidate(int applicantId, int interviewId)
+        public async Task<ResponseViewModel<bool>> PromoteApplicant(int applicantId, int interviewId)
         {
             ResponseViewModel<bool> result = new();
             try

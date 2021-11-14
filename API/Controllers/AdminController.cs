@@ -1,4 +1,5 @@
 ﻿using IBLL;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    [Route("api/[controller]/[Action]")]
     [ApiController]
-    [Route("[controller]")]
-    public class AdminController : Controller
+    public class AdminController : ControllerBase
     {
         private readonly IService _service;
 
@@ -43,9 +44,9 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PromoteCandidate(int applicantId, int interviewId)
+        public async Task<IActionResult> PromoteApplicant(int applicantId, int interviewId)
         {
-            var response = await this._service.AdminService.PromoteCandidate(applicantId, interviewId);
+            var response = await this._service.AdminService.PromoteApplicant(applicantId, interviewId);
 
             if (response.Error.Succeeded)
             {
@@ -73,9 +74,10 @@ namespace API.Controllers
 
             if (response.Error.Succeeded)
             {
-                return Ok();
+                return Ok(response);
             }
             return BadRequest(response.Error);
         }
+
     }
 }

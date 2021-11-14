@@ -25,9 +25,9 @@ namespace BLL
             return result;
         }
 
-        public async Task<ResponseViewModel<bool>> PromoteCandidate(int applicantId, int interviewId)
+        public async Task<ResponseViewModel<bool>> PromoteApplicant(int applicantId, int interviewId)
         {
-            var result = await this.UnitOfWork.InterviewRepository.PromoteCandidate(applicantId, interviewId);
+            var result = await this.UnitOfWork.InterviewRepository.PromoteApplicant(applicantId, interviewId);
             return result;
         }
 
