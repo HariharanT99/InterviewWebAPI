@@ -62,7 +62,7 @@ namespace API.Controllers
 
             if (response.Error.Succeeded)
             {
-                return Ok(response);
+                return Ok(response.Data);
             }
             return BadRequest(response.Error);
         }
@@ -74,7 +74,7 @@ namespace API.Controllers
 
             if (response.Error.Succeeded)
             {
-                return Ok(response);
+                return Ok(response.Data);
             }
             return BadRequest(response.Error);
         }
