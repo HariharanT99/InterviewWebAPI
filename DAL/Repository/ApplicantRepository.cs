@@ -48,23 +48,13 @@ namespace DAL.Repository
             return result;
         }
 
-        public async Task<ResponseViewModel<bool>> AddApplicant(int userId, string firstName, string lastName, string lastEmployer, string lastDesignation, int appliedFor, int referedBy, string medicalStatus, int noticePeriod, string resume)
+        public async Task<ResponseViewModel<bool>> AddApplicant(AddApplicantViewModel applicant)
         {
             ResponseViewModel<bool> result = new();
 
             try
             {
-                var param = new DynamicParameters();
-                param.Add("UserId", userId);
-                param.Add("FirstName", firstName);
-                param.Add("LastName", lastName);
-                param.Add("LastEmployer", lastEmployer);
-                param.Add("LastDesignation", lastDesignation);
-                param.Add("AppliedFor", appliedFor);
-                param.Add("ReferedBy", referedBy);
-                param.Add("MedicalStatus", medicalStatus);
-                param.Add("NoticePeriod", noticePeriod);
-                param.Add("Resume", resume);
+                var param = new DynamicParameters(applicant);
 
                 var sp = "uspAddApplicant @UserId," +
                                           "@FirstName," +
@@ -84,7 +74,7 @@ namespace DAL.Repository
                     result.Data = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 result.Error.Succeeded = false;
                 result.Error.ErrorMsg = "Something went wrong";

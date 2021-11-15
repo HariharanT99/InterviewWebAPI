@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ViewModel;
 
 namespace API.Controllers
 {
@@ -32,9 +33,9 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddApplicant(int userId, string firstName, string lastName, string lastEmployer, string lastDesignation, int appliedFor, int referedBy, string medicalStatus, int noticePeriod, string resume)
+        public async Task<IActionResult> AddApplicant(AddApplicantViewModel applicant)
         {
-            var response = await this._service.AdminService.AddApplicant(userId, firstName, lastName, lastEmployer, lastDesignation, appliedFor, referedBy, medicalStatus, noticePeriod, resume);
+            var response = await this._service.AdminService.AddApplicant(applicant);
 
             if (response.Error.Succeeded)
             {
@@ -44,9 +45,9 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PromoteApplicant(int applicantId, int interviewId)
+        public async Task<IActionResult> PromoteApplicant(PromoteApplicantViewModel model)
         {
-            var response = await this._service.AdminService.PromoteApplicant(applicantId, interviewId);
+            var response = await this._service.AdminService.PromoteApplicant(model);
 
             if (response.Error.Succeeded)
             {

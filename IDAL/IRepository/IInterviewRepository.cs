@@ -9,6 +9,6 @@ namespace IDAL.IRepository
 {
     public interface IInterviewRepository
     {
-        Task<ResponseViewModel<bool>> PromoteApplicant(int applicantId, int interviewId);
+        Task<ResponseViewModel<bool>> PromoteApplicant(PromoteApplicantViewModel model);
     }
 }

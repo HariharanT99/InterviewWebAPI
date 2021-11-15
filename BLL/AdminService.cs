@@ -19,15 +19,15 @@ namespace BLL
             return result;
         }
 
-        public async Task<ResponseViewModel<bool>> AddApplicant(int userId, string firstName, string lastName, string lastEmployer, string lastDesignation, int appliedFor, int referedBy, string medicalStatus, int noticePeriod, string resume)
+        public async Task<ResponseViewModel<bool>> AddApplicant(AddApplicantViewModel applicant)
         {
-            var result = await this.UnitOfWork.ApplicantRepository.AddApplicant(userId, firstName, lastName, lastEmployer, lastDesignation, appliedFor, referedBy, medicalStatus, noticePeriod, resume);
+            var result = await this.UnitOfWork.ApplicantRepository.AddApplicant(applicant);
             return result;
         }
 
-        public async Task<ResponseViewModel<bool>> PromoteApplicant(int applicantId, int interviewId)
+        public async Task<ResponseViewModel<bool>> PromoteApplicant(PromoteApplicantViewModel model)
         {
-            var result = await this.UnitOfWork.InterviewRepository.PromoteApplicant(applicantId, interviewId);
+            var result = await this.UnitOfWork.InterviewRepository.PromoteApplicant(model);
             return result;
         }
 

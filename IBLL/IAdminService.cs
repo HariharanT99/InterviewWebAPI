@@ -10,8 +10,8 @@ namespace IBLL
     public interface IAdminService
     {
         Task<ResponseViewModel<ApplicantViewModel>> GetApplicantById(int id);
-        Task<ResponseViewModel<bool>> AddApplicant(int userId, string firstName, string lastName, string lastEmployer, string lastDesignation, int appliedFor, int referedBy, string medicalStatus, int noticePeriod, string resume);
-        Task<ResponseViewModel<bool>> PromoteApplicant(int applicantId, int interviewId);
+        Task<ResponseViewModel<bool>> AddApplicant(AddApplicantViewModel applicant);
+        Task<ResponseViewModel<bool>> PromoteApplicant(PromoteApplicantViewModel model);
         Task<ResponseViewModel<List<UserViewModel>>> GetAllUser();
         Task<ResponseViewModel<List<DesignationViewModel>>> GetAllDesignation();
     }

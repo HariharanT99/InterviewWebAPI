@@ -14,14 +14,12 @@ namespace DAL.Repository
     {
         public InterviewRepository(IDbConnection connection): base(connection){ } 
 
-        public async Task<ResponseViewModel<bool>> PromoteApplicant(int applicantId, int interviewId)
+        public async Task<ResponseViewModel<bool>> PromoteApplicant(PromoteApplicantViewModel model)
         {
             ResponseViewModel<bool> result = new();
             try
             {
-                var param = new DynamicParameters();
-                param.Add("ApplicantId", applicantId);
-                param.Add("InterviewId", interviewId);
+                var param = new DynamicParameters(model);
 
                 var sp = "uspPromoteApplicant @ApplicantId, @InterviewId";
 
