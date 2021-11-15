@@ -9,6 +9,7 @@ namespace ViewModel
     public class AddApplicantViewModel
     {
         public int UserID { get; set; }
+        public int ApplicantId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string LastEmployer { get; set; }

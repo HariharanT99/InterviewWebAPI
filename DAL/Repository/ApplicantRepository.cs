@@ -74,7 +74,7 @@ namespace DAL.Repository
                     result.Data = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception) //Custom Exception
             {
                 result.Error.Succeeded = false;
                 result.Error.ErrorMsg = "Something went wrong";
