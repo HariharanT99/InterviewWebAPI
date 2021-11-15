@@ -70,7 +70,7 @@ namespace DAL.Repository
                     {
                         foreach (var interviewer in applicantInterviewerList)
                         {
-                            if (applicant.ApplicantId == interviewer.ApplicantId)
+                            if (applicant.ApplicantId == interviewer.ApplicantId && interviewer.InterviewerName != null)
                             {
                                 applicantViewModel.InterviewerList.Add(interviewer.InterviewerName);
                             }

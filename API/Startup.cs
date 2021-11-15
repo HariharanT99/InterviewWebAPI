@@ -36,6 +36,18 @@ namespace API
             });
 
             services.AddScoped<IService, Service>(provide => new Service(Configuration.GetConnectionString("DbConnection")));
+
+            services
+                .AddCors(options =>
+                {
+                    options
+                        .AddPolicy("Policy",
+                        builder =>
+                            builder
+                                .AllowAnyHeader()
+                                .AllowAnyMethod()
+                                .AllowAnyOrigin());
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +65,8 @@ namespace API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("Policy"); // add cors before the endpoints since it should be enabled before routing to th e controllers.
 
             app.UseEndpoints(endpoints =>
             {
