@@ -7,13 +7,13 @@ using Model;
 
 namespace DAL.Data
 {
-    public partial class InterviewManagementContext : DbContext
+    public partial class InterviewManagementSystemContext : DbContext
     {
-        public InterviewManagementContext()
+        public InterviewManagementSystemContext()
         {
         }
 
-        public InterviewManagementContext(DbContextOptions<InterviewManagementContext> options)
+        public InterviewManagementSystemContext(DbContextOptions<InterviewManagementSystemContext> options)
             : base(options)
         {
         }
@@ -35,7 +35,8 @@ namespace DAL.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer(" Server=TRAINEE-05; Database=InterviewManagementSystem; User Id=SA; Password=harant@26031999;Trusted_Connection=false;MultipleActiveResultSets=true;");
             }
         }
 
@@ -45,22 +46,37 @@ namespace DAL.Data
 
             modelBuilder.Entity<Applicant>(entity =>
             {
-                entity.Property(e => e.Resume).IsUnicode(false);
+                entity.Property(e => e.FirstName).IsUnicode(false);
+
+                entity.Property(e => e.LastDesignation).IsUnicode(false);
+
+                entity.Property(e => e.LastEmployer).IsUnicode(false);
+
+                entity.Property(e => e.LastName).IsUnicode(false);
+
+                entity.Property(e => e.MedicalStatus).IsUnicode(false);
 
                 entity.HasOne(d => d.AppliedForNavigation)
                     .WithMany(p => p.Applicants)
                     .HasForeignKey(d => d.AppliedFor)
-                    .HasConstraintName("FK__Applicant__Appli__2A4B4B5E");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Applicant__Appli__398D8EEE");
 
                 entity.HasOne(d => d.CreatedByNavigation)
-                    .WithMany(p => p.Applicants)
+                    .WithMany(p => p.ApplicantCreatedByNavigations)
                     .HasForeignKey(d => d.CreatedBy)
-                    .HasConstraintName("FK__Applicant__Creat__2B3F6F97");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Applicant__Creat__3A81B327");
+
+                entity.HasOne(d => d.ReferedByNavigation)
+                    .WithMany(p => p.ApplicantReferedByNavigations)
+                    .HasForeignKey(d => d.ReferedBy)
+                    .HasConstraintName("FK__Applicant__Refer__3B75D760");
             });
 
             modelBuilder.Entity<Designation>(entity =>
             {
-                entity.Property(e => e.DesignationId).ValueGeneratedNever();
+                entity.Property(e => e.DesignationId).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Designation1).IsUnicode(false);
             });
@@ -70,17 +86,20 @@ namespace DAL.Data
                 entity.HasOne(d => d.Applicant)
                     .WithMany(p => p.Interviews)
                     .HasForeignKey(d => d.ApplicantId)
-                    .HasConstraintName("FK__Interview__Appli__30F848ED");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Interview__Appli__3C69FB99");
 
                 entity.HasOne(d => d.InterviewRound)
                     .WithMany(p => p.Interviews)
                     .HasForeignKey(d => d.InterviewRoundId)
-                    .HasConstraintName("FK__Interview__Inter__31EC6D26");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Interview__Inter__3D5E1FD2");
 
                 entity.HasOne(d => d.ResultNavigation)
                     .WithMany(p => p.Interviews)
                     .HasForeignKey(d => d.Result)
-                    .HasConstraintName("FK__Interview__Resul__300424B4");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Interview__Resul__3E52440B");
             });
 
             modelBuilder.Entity<InterviewRound>(entity =>
@@ -92,52 +111,73 @@ namespace DAL.Data
 
             modelBuilder.Entity<InterviewerReview>(entity =>
             {
+                entity.Property(e => e.Comments).IsUnicode(false);
+
+                entity.Property(e => e.Cons).IsUnicode(false);
+
+                entity.Property(e => e.Pros).IsUnicode(false);
+
                 entity.HasOne(d => d.Interview)
                     .WithMany(p => p.InterviewerReviews)
                     .HasForeignKey(d => d.InterviewId)
-                    .HasConstraintName("FK__Interview__Inter__403A8C7D");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Interview__Inter__3F466844");
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.InterviewerReviews)
                     .HasForeignKey(d => d.Status)
-                    .HasConstraintName("FK__Interview__Statu__3F466844");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Interview__Statu__403A8C7D");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.InterviewerReviews)
                     .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Interview__UserI__412EB0B6");
             });
 
             modelBuilder.Entity<Rating>(entity =>
             {
+                entity.Property(e => e.RatingId).ValueGeneratedOnAdd();
+
                 entity.Property(e => e.Category).IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Role>(entity =>
+            {
+                entity.Property(e => e.RoleId).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Type).IsUnicode(false);
             });
 
             modelBuilder.Entity<Skill>(entity =>
             {
+                entity.Property(e => e.Name).IsUnicode(false);
+
                 entity.HasOne(d => d.Parent)
                     .WithMany(p => p.InverseParent)
                     .HasForeignKey(d => d.ParentId)
-                    .HasConstraintName("FK__Skill__ParentID__3A81B327");
+                    .HasConstraintName("FK__Skill__ParentID__4222D4EF");
             });
 
             modelBuilder.Entity<SkillRating>(entity =>
             {
-                entity.Property(e => e.SkillRatingId).ValueGeneratedNever();
-
                 entity.HasOne(d => d.Rating)
                     .WithMany(p => p.SkillRatings)
                     .HasForeignKey(d => d.RatingId)
-                    .HasConstraintName("FK__SkillRati__Ratin__45F365D3");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__SkillRati__Ratin__4316F928");
 
                 entity.HasOne(d => d.Review)
                     .WithMany(p => p.SkillRatings)
                     .HasForeignKey(d => d.ReviewId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__SkillRati__Revie__440B1D61");
 
                 entity.HasOne(d => d.Skill)
                     .WithMany(p => p.SkillRatings)
                     .HasForeignKey(d => d.SkillId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__SkillRati__Skill__44FF419A");
             });
 
@@ -150,17 +190,17 @@ namespace DAL.Data
 
             modelBuilder.Entity<UserRole>(entity =>
             {
-                entity.Property(e => e.UserRoleId).ValueGeneratedNever();
-
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.UserRoles)
                     .HasForeignKey(d => d.RoleId)
-                    .HasConstraintName("FK__UserRole__RoleID__36B12243");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__UserRole__RoleID__45F365D3");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.UserRoles)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__UserRole__UserID__37A5467C");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__UserRole__UserID__46E78A0C");
             });
 
             OnModelCreatingPartial(modelBuilder);

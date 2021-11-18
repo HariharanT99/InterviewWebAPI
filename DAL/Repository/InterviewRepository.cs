@@ -5,6 +5,9 @@ using Dapper;
 using IDAL.IRepository;
 using Model;
 using ViewModel;
+using System;
+using System.Collections.Generic;
+using Mapster;
 
 namespace DAL.Repository
 {
@@ -75,6 +78,30 @@ namespace DAL.Repository
                 result.Error.ErrorMsg = "something went wrong";
             }
 
+            return result;
+        }
+
+        public async Task<ResponseViewModel<bool>> PromoteApplicant(PromoteApplicantViewModel model)
+        {
+            ResponseViewModel<bool> result = new();
+            try
+            {
+                var param = new DynamicParameters(model);
+
+                var sp = "uspPromoteApplicant @ApplicantId, @InterviewId";
+
+                var response = await Connection.ExecuteScalarAsync<string>(sp, param);
+                if (response == "Success")
+                {
+                    result.Data = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Error.Succeeded = false;
+                result.Error.ErrorMsg = "Something went wrong";
+                result.Error.ErrorCode = 500;
+            }
             return result;
         }
     }

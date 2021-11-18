@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -19,12 +20,12 @@ namespace Model
         [Column("InterviewID")]
         public int InterviewId { get; set; }
         [Column("ApplicantID")]
-        public int? ApplicantId { get; set; }
+        public int ApplicantId { get; set; }
         [Column("InterviewRoundID")]
-        public byte? InterviewRoundId { get; set; }
+        public byte InterviewRoundId { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime? Date { get; set; }
-        public byte? Result { get; set; }
+        public DateTime? InterviewAt { get; set; }
+        public byte Result { get; set; }
 
         [ForeignKey(nameof(ApplicantId))]
         [InverseProperty("Interviews")]

@@ -9,5 +9,9 @@ namespace IDAL.IConfiguration
         IInterviewRepository InterviewRepository { get; }
 
         IInterviewerReviewRepository InterviewerReviewRepository { get; }
+
+        IDesignationRepository DesignationRepository { get; }
+        
+        IUserRepository UserRepository { get; }
     }
 }

@@ -8,5 +8,7 @@ namespace IDAL.IRepository
         Task<ResponseViewModel<bool>> RejectApplicant(int InterviewId);
 
         Task<ResponseViewModel<bool>> ScheduleInterviewDate(ScheduleInterviewViewModel model);
+
+        Task<ResponseViewModel<bool>> PromoteApplicant(PromoteApplicantViewModel model);
     }
 }

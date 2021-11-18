@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -18,17 +20,17 @@ namespace Model
         [Column("InterviewerReviewID")]
         public int InterviewerReviewId { get; set; }
         [Column("UserID")]
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
         [Column("InterviewID")]
-        public int? InterviewId { get; set; }
+        public int InterviewId { get; set; }
         [StringLength(500)]
         public string Pros { get; set; }
         [StringLength(500)]
         public string Cons { get; set; }
         [StringLength(1000)]
         public string Comments { get; set; }
-        public byte? Status { get; set; }
-        public bool? IsActive { get; set; }
+        public byte Status { get; set; }
+        public bool IsActive { get; set; }
 
         [ForeignKey(nameof(InterviewId))]
         [InverseProperty("InterviewerReviews")]

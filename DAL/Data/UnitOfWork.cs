@@ -9,10 +9,10 @@ namespace DAL.Data
     public class UnitOfWork : IUnitOfWork
     {
         private IDbConnection _connection;
-
         public IApplicantRepository ApplicantRepository { get; private set; }
-
         public IInterviewRepository InterviewRepository { get; private set; }
+        public IDesignationRepository DesignationRepository { get; private set; }
+        public IUserRepository UserRepository { get; private set; }
 
         public IInterviewerReviewRepository InterviewerReviewRepository { get; private set; }
 
@@ -25,6 +25,8 @@ namespace DAL.Data
             this.InterviewRepository = new InterviewRepository(this._connection);
 
             this.InterviewerReviewRepository = new InterviewerReviewRepository(this._connection);
+
+            this.UserRepository = new UserRepository(this._connection);
         }
     }
 }

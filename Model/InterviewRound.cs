@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -17,8 +19,9 @@ namespace Model
         [Key]
         [Column("InterviewRoundID")]
         public byte InterviewRoundId { get; set; }
-        public byte? RoundOrder { get; set; }
-        [StringLength(20)]
+        public byte RoundOrder { get; set; }
+        [Required]
+        [StringLength(30)]
         public string InterviewRoundName { get; set; }
 
         [InverseProperty(nameof(Interview.InterviewRound))]
