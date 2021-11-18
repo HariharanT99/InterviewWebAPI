@@ -20,6 +20,8 @@ namespace ViewModel
 
         public int CurrentRound { get; set; }
 
+        public int InterviewId { get; set; }
+
         public DateTime? InterviewAt { get; set; }
 
         public string Status { get; set; }
